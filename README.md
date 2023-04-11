@@ -125,3 +125,19 @@ DONT: Combine with other scenarios. This will make it difficult to locate where 
 DO: Declare a new instance of an error case with `const` for compile time benefits.
 
 DONT: Declare a new instance of an error case without `const` on the UI code because it can be recreated.
+
+### Developed by
+
+- [Edamama](https://edamama.ph/)
+- [Edamama Github Org](https://github.com/edamama-ph)
+
+### Contributors
+
+- [Azma Ahmed](https://www.linkedin.com/in/azma-ahmed-bb8940150/)
+- [Gian Patrick Quintana](https://www.linkedin.com/in/gianpatrickquintana/)
+- [Harsh Chaurasia](https://www.linkedin.com/in/harsh-chaurasia/)
+- [Omkar Gaikwad](https://www.linkedin.com/in/omkar-gaikwad-96a380167/)
+- [Pruitvi Sandiri](https://www.linkedin.com/in/pruithvi-sandiri-b01214103/)
+- [Reyster Fresco](https://github.com/reysterf/)
+- [Shiv Pratap Singh](https://www.linkedin.com/in/shiv-pratap-singh-bb8609a7/)
+- [Shubhanshu Singh](https://www.linkedin.com/in/shubhanshu-singh-151410/)
