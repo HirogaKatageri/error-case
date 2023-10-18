@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:error_case/error_case.dart';
 import 'package:error_case/exception/error_case_exception.dart';
 
@@ -33,8 +35,9 @@ class ObjectSingleErrorCase extends SingleErrorCase {
     } on ErrorCaseException catch (ex) {
       isErrorThrown = true;
       onError.call(ex);
-    } catch (ex) {
+    } catch (ex, stackTrace) {
       isErrorThrown = true;
+      log('Unknown exception from error case', stackTrace: stackTrace);
       onError.call(Exception('Unknown exception from error case'));
     }
 

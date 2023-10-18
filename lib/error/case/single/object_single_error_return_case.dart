@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:error_case/error_case.dart';
 import 'package:error_case/exception/error_case_exception.dart';
 
@@ -32,7 +34,8 @@ class ObjectSingleErrorReturnCase extends SingleErrorReturnCase {
       rethrow;
     } on ErrorCaseException catch (ex) {
       return onError(ex);
-    } catch (ex) {
+    } catch (ex, stackTrace) {
+      log('Unknown exception from error case', stackTrace: stackTrace);
       return onError(Exception('Unknown exception from error case'));
     }
   }
