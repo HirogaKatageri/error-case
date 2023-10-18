@@ -1,30 +1,56 @@
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
+include:
+  package:lints/recommended.yaml
 
-include: package:lints/recommended.yaml
+analyzer:
+  exclude:
+    - bricks/
+    - build/**
+    - lib/**.g.dart
+    - test/**.g.dart
 
-# Uncomment the following section to specify additional rules.
+  plugins:
+    - custom_lint
 
-# linter:
-#   rules:
-#     - camel_case_types
+  errors:
+    avoid_print: warning
+    avoid_relative_lib_imports: warning
+    always_use_package_imports: warning
 
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    - always_declare_return_types
+    - cancel_subscriptions
+    - close_sinks
+    - collection_methods_unrelated_type
+    - combinators_ordering
+    - comment_references
+    - dangling_library_doc_comments
+    - implicit_call_tearoffs
+    - invalid_case_patterns
+    - always_use_package_imports
+    - avoid_empty_else
+    - avoid_print
+    - avoid_relative_lib_imports
+    - discarded_futures
+    - always_put_required_named_parameters_first
+    - always_put_control_body_on_new_line
+    - avoid_escaping_inner_quotes
+    - avoid_multiple_declarations_per_line
+    - avoid_void_async
+    - cascade_invocations
+    - cast_nullable_to_non_nullable
+    - eol_at_end_of_file
+    - leading_newlines_in_multiline_strings
+    - noop_primitive_operations
+    - prefer_expression_function_bodies
+    - prefer_single_quotes
+    - require_trailing_commas
+    - sized_box_for_whitespace
+    - sort_constructors_first
+    - type_annotate_public_apis
+    - unnecessary_final
+    - unnecessary_lambdas
+    - use_raw_strings
+    - sort_pub_dependencies
+    - secure_pubspec_urls
+    - use_super_parameters

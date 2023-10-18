@@ -4,18 +4,21 @@ import 'package:error_case/error_case.dart';
 import 'package:error_case/exception/error_case_exception.dart';
 
 class ObjectSingleErrorCase extends SingleErrorCase {
-  const ObjectSingleErrorCase(
-      {required this.requiredFields,
-      Map<String, num?> minimumValue = const {},
-      Map<String, num?> maximumValue = const {}})
-      : super(minimumValue, maximumValue);
+  const ObjectSingleErrorCase({
+    required this.requiredFields,
+    Map<String, num?> minimumValue = const {},
+    Map<String, num?> maximumValue = const {},
+  }) : super(minimumValue, maximumValue);
 
   final List<String> requiredFields;
 
   @override
   void validate<T extends JsonModel>(
-      T value, Function(Exception ex) onError, Function(T value) onSuccess) {
-    final json = value.toJson();
+    T value,
+    Function(Exception ex) onError,
+    Function(T value) onSuccess,
+  ) {
+    var json = value.toJson();
     var isErrorThrown = false;
 
     try {

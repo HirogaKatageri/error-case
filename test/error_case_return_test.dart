@@ -9,9 +9,7 @@ class Person extends JsonModel {
   final int age;
 
   @override
-  Map<String, dynamic> toJson() {
-    return {'name': name, 'age': age};
-  }
+  Map<String, dynamic> toJson() => {'name': name, 'age': age};
 }
 
 void main() {
@@ -26,7 +24,10 @@ void main() {
     test('validate should succeed with valid input', () {
       var person = Person('John', 30);
       var result = objectSingleErrorReturnCase.validate<Person, String>(
-          person, (ex) => fail('Unexpected error: $ex'), (value) => 'Success');
+        person,
+        (ex) => fail('Unexpected error: $ex'),
+        (value) => 'Success',
+      );
 
       expect(result, equals('Success'));
     });
@@ -38,18 +39,26 @@ void main() {
       var errorCase = ObjectSingleErrorReturnCase(requiredFields: []);
 
       expect(
-          () => errorCase.validate<Person, dynamic>(person,
-              (ex) => fail('Unexpected error: $ex'), (value) => 'Success'),
-          throwsA(const TypeMatcher<NoRequiredFieldsError>()));
+        () => errorCase.validate<Person, dynamic>(
+          person,
+          (ex) => fail('Unexpected error: $ex'),
+          (value) => 'Success',
+        ),
+        throwsA(const TypeMatcher<NoRequiredFieldsError>()),
+      );
     });
 
     test('validate should return BlankRequiredStringException if name is empty',
         () {
       var person = Person('', 30);
       expect(
-          objectSingleErrorReturnCase.validate<Person, dynamic>(
-              person, (ex) => ex, (value) => fail('Should return exception')),
-          const TypeMatcher<BlankRequiredStringException>());
+        objectSingleErrorReturnCase.validate<Person, dynamic>(
+          person,
+          (ex) => ex,
+          (value) => fail('Should return exception'),
+        ),
+        const TypeMatcher<BlankRequiredStringException>(),
+      );
     });
 
     test(
@@ -57,29 +66,44 @@ void main() {
         () {
       var person = Person('John', 10);
       objectSingleErrorReturnCase = ObjectSingleErrorReturnCase(
-          requiredFields: ['name', 'age'], minimumValue: {'age': 18});
+        requiredFields: ['name', 'age'],
+        minimumValue: {'age': 18},
+      );
       expect(
-          objectSingleErrorReturnCase.validate<Person, dynamic>(
-              person, (ex) => ex, (value) => fail('Should throw exception')),
-          const TypeMatcher<ValueBelowMinimumException>());
+        objectSingleErrorReturnCase.validate<Person, dynamic>(
+          person,
+          (ex) => ex,
+          (value) => fail('Should throw exception'),
+        ),
+        const TypeMatcher<ValueBelowMinimumException>(),
+      );
     });
 
     test('validate should return onError result if exception is thrown', () {
       var person = Person('', 30);
       expect(
-          objectSingleErrorReturnCase.validate<Person, String>(person,
-              (ex) => 'Error: $ex', (value) => fail('Should throw exception')),
-          equals(
-              "Error: Field 'name' in ObjectSingleErrorReturnCase is blank."));
+        objectSingleErrorReturnCase.validate<Person, String>(
+          person,
+          (ex) => 'Error: $ex',
+          (value) => fail('Should throw exception'),
+        ),
+        equals(
+          "Error: Field 'name' in ObjectSingleErrorReturnCase is blank.",
+        ),
+      );
     });
 
     test('validate should return onSuccess result if no exception is thrown',
         () {
       var person = Person('John', 30);
       expect(
-          objectSingleErrorReturnCase.validate<Person, String>(person,
-              (ex) => fail('Unexpected error: $ex'), (value) => 'Success'),
-          equals('Success'));
+        objectSingleErrorReturnCase.validate<Person, String>(
+          person,
+          (ex) => fail('Unexpected error: $ex'),
+          (value) => 'Success',
+        ),
+        equals('Success'),
+      );
     });
   });
 }

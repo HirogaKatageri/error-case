@@ -7,7 +7,7 @@ abstract class ErrorCase {
   final Map<String, num?> maximumValue;
 
   void validateNestedKeyValue(String key, Map<String, dynamic> json) {
-    final keys = key.split('.');
+    var keys = key.split('.');
 
     Map<String, dynamic> nJson = json;
     int index = 0;
@@ -51,8 +51,8 @@ abstract class ErrorCase {
   }
 
   void _validateNum(String key, num value) {
-    final minValue = minimumValue[key];
-    final maxValue = maximumValue[key];
+    var minValue = minimumValue[key];
+    var maxValue = maximumValue[key];
 
     if (minValue != null && value < minValue) {
       throw ValueBelowMinimumException('$runtimeType', key);
