@@ -1,6 +1,6 @@
 name: error_case
 description: A library to define error use cases for Dart.
-version: 0.0.2
+version: 0.0.3
 
 homepage: 'https://github.com/HirogaKatageri/error-case'
 repository: 'https://github.com/HirogaKatageri/error-case'
