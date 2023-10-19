@@ -8,8 +8,8 @@ abstract class SingleErrorCase extends ErrorCase {
     Map<String, num?> maximumValue,
   ) : super(minimumValue, maximumValue);
 
-  void validate<T extends JsonModel>(
-    T value,
+  void validate<T>(
+    dynamic value,
     Function(Exception exception) onError,
     Function(T value) onSuccess,
   );

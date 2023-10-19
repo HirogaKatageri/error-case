@@ -13,8 +13,8 @@ class ObjectSingleErrorReturnCase extends SingleErrorReturnCase {
   final List<String> requiredFields;
 
   @override
-  R validate<T extends JsonModel, R>(
-    T value,
+  R validate<T, R>(
+    dynamic value,
     R Function(Exception ex) onError,
     R Function(T value) onSuccess,
   ) {

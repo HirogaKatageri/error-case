@@ -85,10 +85,9 @@ class _MockObjectSingleErrorCase extends ObjectSingleErrorCase {
         );
 }
 
-class _MockModel extends JsonModel {
+class _MockModel {
   _MockModel(this.json);
   final Map<String, dynamic> json;
 
-  @override
   Map<String, dynamic> toJson() => json;
 }

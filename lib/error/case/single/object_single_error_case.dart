@@ -13,8 +13,8 @@ class ObjectSingleErrorCase extends SingleErrorCase {
   final List<String> requiredFields;
 
   @override
-  void validate<T extends JsonModel>(
-    T value,
+  void validate<T>(
+    dynamic value,
     Function(Exception ex) onError,
     Function(T value) onSuccess,
   ) {

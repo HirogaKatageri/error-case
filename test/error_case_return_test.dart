@@ -2,13 +2,12 @@ import 'package:test/test.dart';
 import 'package:error_case/error_case.dart';
 import 'package:error_case/exception/error_case_exception.dart';
 
-class Person extends JsonModel {
+class Person {
   Person(this.name, this.age);
 
   final String name;
   final int age;
 
-  @override
   Map<String, dynamic> toJson() => {'name': name, 'age': age};
 }
 
